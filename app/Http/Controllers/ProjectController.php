@@ -61,7 +61,8 @@ class ProjectController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -69,7 +70,28 @@ class ProjectController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'min:3', 'max:255'],
+            'start_date' => ['required', 'date'],
+            'end_date' => ['required', 'date'],
+        ]);
+
+        try {
+            $project = Project::findOrFail($id);
+
+            $project->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'start_date' => \Carbon\Carbon::parse($request->start_date)->format('Y-m-d'),
+                'end_date' => \Carbon\Carbon::parse($request->end_date)->format('Y-m-d'),
+            ]);
+
+            return redirect()->route('projects.index')->with('success', 'Projet mis à jour avec succès.');
+        } catch (\Exception $e){
+            return redirect()->route('projects.index')->with('error', 'Une erreur est survenue lors de la mise à jour du projet.');
+        }
+
     }
 
     /**

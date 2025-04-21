@@ -77,6 +77,13 @@ class ProjectController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+
+        if (auth()->user()->id !== $project->user_id) {
+            return redirect()->route('projects.index')->with('error', 'Vous n\'avez pas la permission de supprimer ce projet.');
+        }
+
+        $project->delete();
+        return redirect()->route('projects.index')->with('success', 'Le projet a été supprimé avec succes.');
     }
 }

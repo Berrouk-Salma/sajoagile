@@ -2,6 +2,16 @@
     <h1>Mes projets</h1>
     <a href="{{ route('projects.create') }}" class="btn btn-primary">Créer un projet</a>
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @elseif(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     @if($projects && $projects->count() > 0)
         @foreach($projects as $project)
             <div class="project">

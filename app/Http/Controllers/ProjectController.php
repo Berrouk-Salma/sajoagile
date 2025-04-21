@@ -30,13 +30,20 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'min:3', 'max:255'],
+            'start_date' => ['required', 'date'],
+            'end_date' => ['required', 'date'],
         ]);
 
+        // dd($request->all());
         auth()->user()->projects()->create([
             'name' => $request->name,
+            'description' => $request->description,
+            'start_date' => \Carbon\Carbon::parse($request->start_date)->format('Y-m-d'),
+            'end_date' => \Carbon\Carbon::parse($request->end_date)->format('Y-m-d'),
         ]);
 
     }

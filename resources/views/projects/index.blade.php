@@ -15,7 +15,11 @@
     @if($projects && $projects->count() > 0)
         @foreach($projects as $project)
             <div class="project">
-                <h3>{{ $project->name }}</h3>
+                <h3>
+                    <a href="{{ route('projects.show', $project) }}">
+                        {{ $project->name }}
+                    </a>
+                </h3>
                 <a href="{{ route('projects.edit', $project) }}" class="btn btn-warning">Modifier</a>
                 <form action="{{ route('projects.destroy', $project) }}" method="POST" style="display: inline;">
                     @csrf

@@ -12,8 +12,9 @@
         </div>
     @endif
 
-    @if($projects && $projects->count() > 0)
-        @foreach($projects as $project)
+    <h2>Projets créés par moi</h2>
+    @if($projectsCreated && $projectsCreated->count() > 0)
+        @foreach($projectsCreated as $project)
             <div class="project">
                 <h3>
                     <a href="{{ route('projects.show', $project) }}">
@@ -29,7 +30,24 @@
             </div>
         @endforeach
     @else
-        <p>Aucun projet trouvé.</p>
+        <p>Aucun projet créé trouvé.</p>
     @endif
 
+    <hr>
+
+    <h2>Projets où je peux participer</h2>
+    @if($projectsJoined && $projectsJoined->count() > 0)
+        @foreach($projectsJoined as $project)
+            <div class="project">
+                <h3>
+                    <a href="{{ route('projects.show', $project) }}">
+                        {{ $project->name }}
+                    </a>
+                </h3>
+                <a href="{{ route('projects.show', $project) }}" class="btn btn-info">Voir le projet</a>
+            </div>
+        @endforeach
+    @else
+        <p>Aucun projet où vous pouvez participer trouvé.</p>
+    @endif
 </x-app-layout>

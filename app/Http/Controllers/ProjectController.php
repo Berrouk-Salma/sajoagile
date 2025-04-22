@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\User;
+use App\Models\UserProject;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -13,9 +14,22 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = auth()->user()->projects;
-        return view('projects.index', compact('projects'));
+        $user = auth()->user();
+
+        $projectsCreated = $user->projects;
+
+        $projectsJoined = UserProject::where('user_id', $user->id)
+            ->where('status', 'accepted')
+            ->with('project')
+            ->get()
+            ->pluck('project');
+
+        return view('projects.index', [
+            'projectsCreated' => $projectsCreated,
+            'projectsJoined' => $projectsJoined,
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.

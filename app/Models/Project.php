@@ -15,4 +15,10 @@ class Project extends Model
         'end_date',
     ];
 
+    public function projectMembers()
+    {
+        return $this->belongsToMany(User::class, 'user_project');
+    }
+
+
 }

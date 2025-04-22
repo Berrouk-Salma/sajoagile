@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectMemberController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,6 +22,11 @@ Route::middleware('auth')->group(function () {
 
     // Project routes
     Route::resource('projects', ProjectController::class);
+
+    Route::get('/search-users', [ProjectMemberController::class, 'searchUsers'])->name('users.search');
+    Route::post('/invite-user', [ProjectMemberController::class, 'inviteUsers'])->name('projects.invite');
+    Route::get('/mes-invitations', [ProjectMemberController::class, 'showInvitations'])->name('projects.invitations');
+    Route::post('/mes-invitations/{projectId}/respond', [ProjectMemberController::class, 'respondToInvitation'])->name('projects.respond');
 });
 
 require __DIR__.'/auth.php';

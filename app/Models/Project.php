@@ -15,10 +15,14 @@ class Project extends Model
         'end_date',
     ];
 
+    public function sprints()
+    {
+        return $this->hasMany(Sprint::class);
+    }
+
     public function projectMembers()
     {
         return $this->belongsToMany(User::class, 'user_project');
     }
-
 
 }

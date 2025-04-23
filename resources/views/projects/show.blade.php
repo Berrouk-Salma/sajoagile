@@ -10,6 +10,36 @@
 
     <hr>
 
+    <div class="sprints mt-4">
+        <h2>Sprints du projet</h2>
+
+        @if($project->sprints && $project->sprints->count() > 0)
+            <ul>
+                @foreach($project->sprints as $sprint)
+                    <li>
+                        <strong>{{ $sprint->goal }}</strong><br>
+                        <span><strong>Date de début:</strong> {{ $sprint->start_date }}</span><br>
+                        <span><strong>Date de fin:</strong> {{ $sprint->end_date }}</span><br>
+
+                        <form action="{{ route('sprints.destroy', [$project, $sprint]) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce sprint ?')">Supprimer</button>
+                        </form>
+                    </li>
+                @endforeach
+            </ul>
+        @else
+            <p>Aucun sprint trouvé pour ce projet.</p>
+        @endif
+
+        <div class="create-sprint mt-4">
+            <a href="{{ route('sprints.create', $project) }}" class="btn btn-primary">Créer un nouveau sprint</a>
+        </div>
+    </div>
+
+    <hr>
+
     <div class="search-users mt-4">
         <h2>Inviter un utilisateur</h2>
         <input type="text" id="user-search" placeholder="Rechercher par nom ou email..." class="form-control mb-2" />

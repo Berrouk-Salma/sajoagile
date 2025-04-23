@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectMemberController;
+use App\Http\Controllers\SprintController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,6 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/invite-user', [ProjectMemberController::class, 'inviteUsers'])->name('projects.invite');
     Route::get('/mes-invitations', [ProjectMemberController::class, 'showInvitations'])->name('projects.invitations');
     Route::post('/mes-invitations/{projectId}/respond', [ProjectMemberController::class, 'respondToInvitation'])->name('projects.respond');
+
+    Route::resource('projects/{project}/sprints', SprintController::class);
 });
 
 require __DIR__.'/auth.php';

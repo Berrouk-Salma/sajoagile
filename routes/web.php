@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/mes-invitations/{projectId}/respond', [ProjectMemberController::class, 'respondToInvitation'])->name('projects.respond');
 
     Route::resource('projects/{project}/sprints', SprintController::class);
+    Route::get('/sprints/{sprint}/edit', [SprintController::class, 'edit'])->name('sprints.edit');
+    Route::put('/sprints/{sprint}', [SprintController::class, 'update'])->name('sprints.update');
     Route::delete('/sprints/{sprint}', [SprintController::class, 'destroy'])->name('sprints.destroy');
 });
 

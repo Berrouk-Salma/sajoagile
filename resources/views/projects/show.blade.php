@@ -21,6 +21,8 @@
                         <span><strong>Date de début:</strong> {{ $sprint->start_date }}</span><br>
                         <span><strong>Date de fin:</strong> {{ $sprint->end_date }}</span><br>
 
+                        <a href="{{ route('sprints.edit', $sprint) }}" class="btn btn-warning">Modifier</a>
+
                         <form action="{{ route('sprints.destroy', $sprint) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')

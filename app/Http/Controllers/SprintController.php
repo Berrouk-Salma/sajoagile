@@ -41,4 +41,10 @@ class SprintController extends Controller
         return redirect()->route('projects.show', $project);
     }
 
+    public function destroy(Sprint $sprint)
+    {
+        $sprint->delete();
+        return redirect()->route('projects.show', $sprint->project_id);
+    }
+
 }

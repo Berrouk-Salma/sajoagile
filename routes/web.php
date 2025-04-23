@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/mes-invitations/{projectId}/respond', [ProjectMemberController::class, 'respondToInvitation'])->name('projects.respond');
 
     Route::resource('projects/{project}/sprints', SprintController::class);
+    Route::delete('/sprints/{sprint}', [SprintController::class, 'destroy'])->name('sprints.destroy');
 });
 
 require __DIR__.'/auth.php';

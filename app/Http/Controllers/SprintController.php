@@ -14,6 +14,11 @@ class SprintController extends Controller
         //return view('projects.index', compact('sprints'));
     //}
 
+    public function show(Sprint $sprint)
+    {
+        return view('sprints.show', compact('sprint'));
+    }
+
     public function create(Project $project)
     {
         return view('sprints.create', compact('project'));

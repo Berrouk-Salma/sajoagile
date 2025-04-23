@@ -17,8 +17,7 @@
             <ul>
                 @foreach($project->sprints as $sprint)
                     <li>
-                        <strong>{{ $sprint->name }}</strong><br>
-                        <span><strong>Date de début:</strong> {{ $sprint->start_date }}</span><br>
+                        <strong><a href="{{ route('sprints.show', $sprint) }}">{{ $sprint->name }}</a></strong><br>                        <span><strong>Date de début:</strong> {{ $sprint->start_date }}</span><br>
                         <span><strong>Date de fin:</strong> {{ $sprint->end_date }}</span><br>
 
                         <a href="{{ route('sprints.edit', $sprint) }}" class="btn btn-warning">Modifier</a>

@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('projects/{project}/sprints', SprintController::class);
     Route::get('/sprints/{sprint}/edit', [SprintController::class, 'edit'])->name('sprints.edit');
     Route::put('/sprints/{sprint}', [SprintController::class, 'update'])->name('sprints.update');
+    Route::get('/sprints/{sprint}', [SprintController::class, 'show'])->name('sprints.show');
     Route::delete('/sprints/{sprint}', [SprintController::class, 'destroy'])->name('sprints.destroy');
 });
 

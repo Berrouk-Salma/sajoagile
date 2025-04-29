@@ -61,8 +61,7 @@
 
                         <div class="mb-3">
                             <label for="password_confirmation" class="form-label">Confirm New Password</label>
-                            <input type="password" class="form-control
-                            " id="password_confirmation" name="password_confirmation">
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                         </div>
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">

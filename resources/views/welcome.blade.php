@@ -7,7 +7,7 @@
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700&display=swap" rel="stylesheet" />
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -16,50 +16,189 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     
     <style>
+        :root {
+            --primary-color: #4e46e5;
+            --light-bg: #f0f4ff;
+            --neutral-100: #f9fafb;
+            --neutral-200: #f3f4f6;
+            --neutral-300: #e5e7eb;
+            --text-dark: #333;
+            --text-light: #6b7280;
+        }
+        
         html, body {
             height: 100%;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
         }
         
         body {
             display: flex;
             flex-direction: column;
+            background-color: var(--neutral-100);
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            padding: 0.75rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            padding: 0;
+        }
+        
+        .nav-link {
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            border-radius: 6px;
+            font-weight: 500;
+            padding: 0.5rem 1.25rem;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            border-radius: 6px;
+            font-weight: 500;
+            padding: 0.5rem 1.25rem;
         }
         
         .hero-section {
-            background: linear-gradient(135deg, #4a00e0, #8e2de2);
-            color: white;
-            padding: 100px 0;
+            background-color: var(--neutral-100);
+            padding: 80px 0 60px;
+            border-bottom: 1px solid var(--neutral-300);
         }
         
-        .feature-icon {
-            font-size: 3rem;
-            color: #4a00e0;
+        .hero-image {
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            height: auto;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .features-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .feature-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--neutral-300);
+            margin-bottom: 2rem;
+        }
+        
+        .feature-tab {
+            padding: 1rem 1.5rem;
+            margin-right: 0.5rem;
+            font-weight: 500;
+            color: var(--text-light);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .feature-tab.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .feature-quote {
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 2rem 0;
+        }
+        
+        .quote-text {
+            font-style: italic;
+            color: var(--text-dark);
+            font-weight: 400;
+            font-size: 1.1rem;
             margin-bottom: 1rem;
         }
         
-        .feature-card {
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .quote-author {
+            font-weight: 600;
+            color: var(--text-dark);
         }
         
         .footer {
-            background-color: #343a40;
-            color: white;
-            padding: 30px 0;
+            background-color: white;
+            border-top: 1px solid var(--neutral-300);
+            padding: 50px 0 30px;
             margin-top: auto;
+        }
+        
+        .footer-heading {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+            color: var(--text-dark);
+        }
+        
+        .footer-link {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        .social-icon:hover {
+            color: var(--primary-color);
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-md navbar-light">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                Agile App
+                Sajo Agile 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -90,122 +229,53 @@
     </nav>
 
     <section class="hero-section">
-        <div class="container text-center">
-            <h1 class="display-4 fw-bold mb-4">Welcome to Agile App</h1>
-            <p class="lead mb-5">A powerful project management tool for agile teams</p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="btn btn-light btn-lg px-4 me-md-2">Go to Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}" class="btn btn-light btn-lg px-4 me-md-2">Log in</a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="btn btn-outline-light btn-lg px-4">Register</a>
-                    @endif
-                @endauth
-            </div>
-        </div>
-    </section>
-
-    <section class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Features</h2>
-                <p class="lead text-muted">Discover what makes our agile app stand out</p>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card feature-card">
-                        <div class="card-body text-center p-4">
-                            <div class="feature-icon">
-                                <i class="fas fa-project-diagram"></i>
-                            </div>
-                            <h3 class="card-title fw-bold">Project Management</h3>
-                            <p class="card-text">Create and manage multiple projects with ease. Assign team members, track progress, and meet deadlines.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card feature-card">
-                        <div class="card-body text-center p-4">
-                            <div class="feature-icon">
-                                <i class="fas fa-running"></i>
-                            </div>
-                            <h3 class="card-title fw-bold">Sprint Planning</h3>
-                            <p class="card-text">Plan your sprints, set goals, and allocate tasks. Keep your team on track with clear objectives.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card feature-card">
-                        <div class="card-body text-center p-4">
-                            <div class="feature-icon">
-                                <i class="fas fa-tasks"></i>
-                            </div>
-                            <h3 class="card-title fw-bold">Task Management</h3>
-                            <p class="card-text">Create, assign, and track tasks with our intuitive kanban board. Move tasks between different stages.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card feature-card">
-                        <div class="card-body text-center p-4">
-                            <div class="feature-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h3 class="card-title fw-bold">Team Collaboration</h3>
-                            <p class="card-text">Work together with your team members. Share updates, leave comments, and stay in sync.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card feature-card">
-                        <div class="card-body text-center p-4">
-                            <div class="feature-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <h3 class="card-title fw-bold">Progress Tracking</h3>
-                            <p class="card-text">Monitor your project's progress with visual indicators and statistics. Stay on top of your goals.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card feature-card">
-                        <div class="card-body text-center p-4">
-                            <div class="feature-icon">
-                                <i class="fas fa-bell"></i>
-                            </div>
-                            <h3 class="card-title fw-bold">Notifications</h3>
-                            <p class="card-text">Stay informed with real-time notifications about task updates, comments, and team activities.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-5 bg-light">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h2 class="fw-bold mb-4">Ready to get started?</h2>
-                    <p class="lead mb-4">Join thousands of teams using our platform to manage their projects more efficiently.</p>
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <h1 class="hero-title">Move fast, stay aligned, and build better - together</h1>
+                    <p class="hero-subtitle">The #1 software development tool used by agile teams</p>
                     <div class="d-grid gap-2 d-md-flex">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="btn btn-primary btn-lg px-4">Go to Dashboard</a>
+                            <a href="{{ url('/dashboard') }}" class="btn btn-primary me-md-2">Go to Dashboard</a>
                         @else
-                            <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-4">Sign Up for Free</a>
-                            <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg px-4">Log In</a>
+                            <a href="{{ route('register') }}" class="btn btn-primary me-md-2">Get started for free</a>
                         @endauth
                     </div>
                 </div>
-                <div class="col-md-6 text-center mt-4 mt-md-0">
-                    <i class="fas fa-laptop-code" style="font-size: 150px; color: #4a00e0;"></i>
+                <div class="col-lg-7">
+                    <img src="{{ asset('storage/images/image.png') }}" alt="Agile App Interface" class="hero-image">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="feature-title">All from a single source of truth</h2>
+            </div>
+            
+            <div class="feature-tabs">
+                <div class="feature-tab active">Plan</div>
+                <div class="feature-tab">Track</div>
+                <div class="feature-tab">Release</div>
+                <div class="feature-tab">Report</div>
+                <div class="feature-tab">Automate</div>
+            </div>
+            
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h3>Plan</h3>
+                    <p class="mb-4">Create your backlog, plan sprints, and distribute tasks across your software team. Prioritize and discuss your team's work in full context with complete visibility.</p>
+                    
+                    <div class="feature-quote">
+                        <p class="quote-text">Work becomes a lot more simple when it's all in one place. It makes collaboration whole lot easier.</p>
+                        <p class="quote-author">APEX AI</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="{{ asset('storage/images/images.jpg') }}" alt="Agile App Interface" class="hero-image">
                 </div>
             </div>
         </div>
@@ -214,12 +284,56 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <h5>Agile App</h5>
-                    <p>A powerful project management tool for agile teams.</p>
+                <div class="col-6 col-md-3 mb-4 mb-md-0">
+                    <h5 class="footer-heading">PRODUCTS</h5>
+                    <a href="#" class="footer-link">Software</a>
+                    <a href="#" class="footer-link">Project Management</a>
+                    <a href="#" class="footer-link">Confluence</a>
+                    <a href="#" class="footer-link">Trello</a>
+                    <a href="#" class="footer-link">Bitbucket</a>
+                    <a href="#" class="footer-link">View all products</a>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <p>&copy; {{ date('Y') }} Agile App. All rights reserved.</p>
+                
+                <div class="col-6 col-md-3 mb-4 mb-md-0">
+                    <h5 class="footer-heading">RESOURCES</h5>
+                    <a href="#" class="footer-link">Technical Support</a>
+                    <a href="#" class="footer-link">Purchasing & Licensing</a>
+                    <a href="#" class="footer-link">Agile Community</a>
+                    <a href="#" class="footer-link">Knowledge base</a>
+                    <a href="#" class="footer-link">Marketplace</a>
+                    <a href="#" class="footer-link">My Account</a>
+                </div>
+                
+                <div class="col-6 col-md-3 mb-4 mb-md-0">
+                    <h5 class="footer-heading">EXPAND & LEARN</h5>
+                    <a href="#" class="footer-link">Partners</a>
+                    <a href="#" class="footer-link">Training & Certification</a>
+                    <a href="#" class="footer-link">Documentation</a>
+                    <a href="#" class="footer-link">Developer Resources</a>
+                    <a href="#" class="footer-link">Enterprise services</a>
+                    <a href="#" class="footer-link">View all resources</a>
+                </div>
+                
+                <div class="col-6 col-md-3">
+                    <h5 class="footer-heading">ABOUT AGILUX</h5>
+                    <a href="#" class="footer-link">Company</a>
+                    <a href="#" class="footer-link">Careers</a>
+                    <a href="#" class="footer-link">Events</a>
+                    <a href="#" class="footer-link">Blogs</a>
+                    <a href="#" class="footer-link">Atlassian Foundation</a>
+                    <a href="#" class="footer-link">Trust & Security</a>
+                    <a href="#" class="footer-link">Contact us</a>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-between mt-5 pt-4 border-top">
+                <div>
+                    <p class="text-muted">&copy; {{ date('Y') }} Agile. All rights reserved.</p>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>

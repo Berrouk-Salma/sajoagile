@@ -15,10 +15,12 @@ class Notification extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'type',
-        'message',
         'user_id',
-        'read_at',
+        'title',
+        'message',
+        'link',
+        'read',
+        'type',
     ];
 
     /**
@@ -34,7 +36,7 @@ class Notification extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'read_at' => 'datetime',
+        'read' => 'boolean',
     ];
 
     /**
@@ -43,5 +45,21 @@ class Notification extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+    
+    /**
+     * Scope a query to only include unread notifications.
+     */
+    public function scopeUnread($query)
+    {
+        return $query->where('read', false);
+    }
+    
+    /**
+     * Scope a query to only include notifications of a specific type.
+     */
+    public function scopeOfType($query, $type)
+    {
+        return $query->where('type', $type);
     }
 }

@@ -102,5 +102,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/users/{id}/edit', [AuthController::class, 'editUser'])->name('admin.users.edit');
         Route::put('/admin/users/{id}', [AuthController::class, 'updateUser'])->name('admin.users.update');
         Route::delete('/admin/users/{id}', [AuthController::class, 'destroyUser'])->name('admin.users.destroy');
-    });
 });
+});
+?>

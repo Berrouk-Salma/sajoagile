@@ -85,8 +85,8 @@
     }
     
     .btn-primary {
-        background-color: #4e46e5;
-        border-color: #4e46e5;
+        background-color: #0052CC;
+        border-color: #0052CC;
         padding: 0.75rem 1rem;
         border-radius: 0.375rem;
         font-weight: 500;
